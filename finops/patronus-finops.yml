@@ -5,20 +5,24 @@ provider: Patronus AI
 providerId: patronus
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- AI
+- AI Evaluation
+- GenAI
+- Guardrails
+- Hallucination Detection
 - LLM
-- Evaluation
-- Safety
-- Industry
+- Agents
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Patronus AI. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for Patronus AI. Cost is metered evaluator calls plus seat-based
+  subscription. Optimize by sampling production traffic, batching evaluator runs, and consolidating
+  around the strongest evaluators (Lynx for hallucination, Glider for general critique).
+notes: Seat + metered evaluator calls; sampling is the primary lever.
 sources:
-- https://www.patronus.ai/
+- https://www.patronus.ai/pricing
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,40 +31,45 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Patronus AI
-serviceCategory: AI
+serviceCategory: AI Evaluation
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
+  pricingCategory: Subscription + Usage
+  billingFrequency: Monthly / Annual
   billingCurrency: USD
   chargeCategories:
+  - Subscription
   - Usage
-  - Purchase
-  - Adjustment
 focusColumns:
   ServiceName: Patronus AI
-  ServiceCategory: AI
+  ServiceCategory: AI Evaluation
   ProviderName: Patronus AI
   PublisherName: Patronus AI
   InvoiceIssuerName: Patronus AI
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Subscription
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: evaluator_calls
+  description: Evaluator API calls.
+  unit: call
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - evaluator
+  - project
+- name: seats
+  description: Active users with platform access.
+  unit: seat-month
+  aggregation: max
+  dimensions:
+  - team
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Track evaluator calls per project monthly.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate to the AI feature/team being evaluated.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Sample production traffic; consolidate around the highest-signal evaluators.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: AI/ML platform team owns the contract.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

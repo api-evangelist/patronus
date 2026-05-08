@@ -7,35 +7,58 @@ created: '2026-05-08'
 modified: '2026-05-08'
 reconciled: false
 tags:
-- AI
+- AI Evaluation
+- GenAI
+- Guardrails
+- Hallucination Detection
 - LLM
-- Evaluation
-- Safety
-- Industry
+- Agents
 - Plans
-description: Placeholder plans/pricing artifact for Patronus AI. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+description: >-
+  Patronus AI offers a free trial with limited evaluator calls and paid tiers (Team, Enterprise) with
+  higher quotas, custom evaluators, and SSO. Self-serve pricing for paid tiers is not consistently
+  published; most paid usage is sales-led.
+notes: Free trial + sales-led paid tiers. Exact paid pricing is contact-sales.
 sources:
-- https://www.patronus.ai/
+- https://www.patronus.ai/pricing
+- https://docs.patronus.ai/
 plans:
-- id: patronus-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: patronus-free
+  name: Free Trial
+  type: free
+  description: Free tier with limited evaluator calls per month for individuals.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Free Tier
+    name: free
     type: flat
-    metric: varies
+    metric: month
     limit: -1
-    timeFrame: usage
+    timeFrame: monthly
     geo: global
     unit: 1
-    price: see https://www.patronus.ai/
+    price: 0
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Limited monthly evaluator calls
+- id: patronus-team-enterprise
+  name: Team / Enterprise
+  type: enterprise
+  description: Paid tiers with higher evaluator quotas, custom evaluators, SSO, and on-prem options.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: true
+  elements:
+  - name: Custom evaluators
+  - name: SSO
+  - name: Higher quotas
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -7,29 +7,39 @@ created: '2026-05-08'
 modified: '2026-05-08'
 reconciled: false
 tags:
-- AI
+- AI Evaluation
+- GenAI
+- Guardrails
+- Hallucination Detection
 - LLM
-- Evaluation
-- Safety
-- Industry
+- Agents
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Patronus AI. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Patronus AI applies per-API-key rate limits and tier-based monthly quotas. Specific RPS thresholds
+  are not publicly documented; the API returns 429 on overage.
+notes: Per-tier monthly quotas; specific RPS not publicly documented.
 sources:
-- https://www.patronus.ai/
+- https://docs.patronus.ai/
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Per API key
   scope: account
-  metric: varies
+  metric: requests
   limit: see provider documentation
-  notes: Pending reconciliation.
+  notes: Throttled with 429 on overage.
+- name: Monthly evaluator calls
+  scope: account
+  metric: calls
+  limit: tier-defined
+  notes: Each tier has a monthly quota.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor 429 with exponential backoff.
+- name: Caching
+  description: Cache evaluator results when scoring identical inputs.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -3,21 +3,47 @@ url: https://raw.githubusercontent.com/api-evangelist/patronus/refs/heads/main/a
 name: Patronus AI
 x-type: company
 description: >-
-  Patronus AI is an LLM evaluation platform offering industry-specific evaluators, automated red-teaming, and benchmark APIs for production GenAI.
+  Patronus AI is an AI evaluation platform offering automated evaluators (Lynx, Glider), guardrails,
+  and experiment tracking for LLM and agentic applications. It exposes a REST API and
+  Python/TypeScript SDKs.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - AI
+  - AI Evaluation
+  - GenAI
+  - Guardrails
+  - Hallucination Detection
   - LLM
-  - Evaluation
-  - Safety
-  - Industry
+  - Agents
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: patronus:platform
+    name: Patronus AI API
+    description: >-
+      REST API for the Patronus platform: evaluate (run a built-in or custom evaluator), criteria,
+      datasets, projects, experiments, and judge endpoints. Authentication via API key. Python SDK at
+      patronus-ai/patronus-py and Node SDK at patronus-ai/patronus-api-node.
+    humanURL: https://docs.patronus.ai/
+    baseURL: https://api.patronus.ai
+    tags:
+      - Evaluators
+      - Criteria
+      - Datasets
+      - Experiments
+      - Judge
+    properties:
+      - type: Documentation
+        url: https://docs.patronus.ai/
+      - type: PythonSDK
+        url: https://github.com/patronus-ai/patronus-py
+      - type: NodeSDK
+        url: https://github.com/patronus-ai/patronus-api-node
 common:
   - type: Website
     url: https://www.patronus.ai/
+  - type: DeveloperPortal
+    url: https://docs.patronus.ai/
   - type: Plans
     url: plans/patronus-plans-pricing.yml
   - type: RateLimits
