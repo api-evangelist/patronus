@@ -1,7 +1,7 @@
 aid: patronus
 url: https://raw.githubusercontent.com/api-evangelist/patronus/refs/heads/main/apis.yml
 name: Patronus AI
-x-type: company
+kind: company
 description: >-
   Patronus AI is an AI evaluation platform offering automated evaluators (Lynx, Glider), guardrails,
   and experiment tracking for LLM and agentic applications. It exposes a REST API and
