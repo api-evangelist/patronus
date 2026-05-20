@@ -40,6 +40,8 @@ apis:
       - type: NodeSDK
         url: https://github.com/patronus-ai/patronus-api-node
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/patronus-ai-inc
   - type: Website
     url: https://www.patronus.ai/
   - type: DeveloperPortal
