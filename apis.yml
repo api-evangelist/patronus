@@ -40,6 +40,8 @@ apis:
       - type: NodeSDK
         url: https://github.com/patronus-ai/patronus-api-node
 common:
+  - type: DomainSecurity
+    url: security/patronus-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/patronus-ai-inc
   - type: Website
@@ -52,6 +54,8 @@ common:
     url: rate-limits/patronus-rate-limits.yml
   - type: FinOps
     url: finops/patronus-finops.yml
+  - type: Blog
+    url: https://www.patronus.ai/blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
