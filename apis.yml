@@ -6,7 +6,19 @@ description: >-
   Patronus AI is an AI evaluation platform offering automated evaluators (Lynx, Glider), guardrails,
   and experiment tracking for LLM and agentic applications. It exposes a REST API and
   Python/TypeScript SDKs.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: true
+  try_now: false
+  public: false
+  label: Freemium (free trial)
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/patronus.png
 tags:
   - AI Evaluation
   - GenAI
